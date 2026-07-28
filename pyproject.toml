@@ -1,0 +1,87 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "alphai-haystack"
+dynamic = ["version"]
+description = "Haystack components for AlphaAI: AI-scored financial news and SEC Form 4 insider events as Documents."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "AlphaAI", email = "support@alphai.io" }]
+keywords = [
+    "haystack",
+    "alphai",
+    "financial-news",
+    "stocks",
+    "sec",
+    "insider",
+    "rag",
+    "llm",
+    "agents",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Typing :: Typed",
+]
+dependencies = [
+    "haystack-ai>=2.6,<3",
+    "alphai-sdk>=0.4.1,<1",
+]
+
+[project.urls]
+Homepage = "https://alphai.io"
+Documentation = "https://alphai.io/developers"
+Repository = "https://github.com/makeev/alphai-haystack"
+"API Reference" = "https://api.alphai.io/api/schema/"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    # Capped on purpose: CI runs `ruff format --check .`, and a ruff minor can
+    # widen what "formatted" means (0.16 started formatting Markdown code blocks).
+    # Bump deliberately, reformat in the same commit.
+    "ruff>=0.6,<0.17",
+    "mypy>=1.10",
+]
+
+[tool.hatch.version]
+path = "src/alphai_haystack/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/alphai_haystack"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/tests", "/README.md", "/LICENSE", "/CHANGELOG.md"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4", "PIE", "RUF"]
+ignore = ["B008"]
+
+# python_version is 3.12 (not our 3.10 floor) because numpy 2.x stubs use
+# PEP 695 `type` statements, which mypy refuses to parse under 3.10/3.11.
+# 3.10 compatibility is held by ruff (target-version py310) and the CI matrix.
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/alphai_haystack"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
