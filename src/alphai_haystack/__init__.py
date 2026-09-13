@@ -1,4 +1,4 @@
-"""Haystack components for the AlphaAI financial-news API (alphai.io)."""
+"""Haystack components for the AlphAI financial-news API (alphai.io)."""
 
 from ._version import VERSION
 from .fetchers import AlphaAIInsiderNewsFetcher, AlphaAINewsFetcher

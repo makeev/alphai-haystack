@@ -1,4 +1,4 @@
-"""Haystack components that turn AlphaAI's scored news feed into Documents.
+"""Haystack components that turn AlphAI's scored news feed into Documents.
 
 Every article on the feed already carries an AI enrichment layer (per-ticker
 impact analysis, a category, a 1-10 relevance score), so the components here
@@ -72,14 +72,14 @@ def _to_document(article: RichNewsArticle) -> Document:
 
 @component
 class AlphaAINewsFetcher:
-    """Fetches AI-scored financial news from AlphaAI as Haystack Documents.
+    """Fetches AI-scored financial news from AlphAI as Haystack Documents.
 
     Each Document's ``content`` is the article title plus summary; ``meta``
     carries the enrichment (tickers, category, 1-10 ``relevance_score``,
     source, url, publish time). Filters set in ``__init__`` are defaults and
     can be overridden per ``run()`` call.
 
-    Requires an AlphaAI API key (free tier available, no card) — see
+    Requires an AlphAI API key (free tier available, no card) — see
     https://alphai.io/developers. The key is read from the ``ALPHAI_API_KEY``
     environment variable by default.
 
@@ -101,7 +101,7 @@ class AlphaAINewsFetcher:
         top_k: int = DEFAULT_TOP_K,
     ) -> None:
         """
-        :param api_key: AlphaAI API key. Defaults to the ``ALPHAI_API_KEY`` env var.
+        :param api_key: AlphAI API key. Defaults to the ``ALPHAI_API_KEY`` env var.
         :param symbol: Only articles tagged with this ticker (e.g. ``"NVDA"``).
         :param category: Only articles in this category (e.g. ``"earnings"``,
             ``"mergers_acquisitions"``, ``"insider"``).
@@ -171,7 +171,7 @@ class AlphaAINewsFetcher:
 
 @component
 class AlphaAIInsiderNewsFetcher:
-    """Fetches SEC Form 4 insider-trading events from AlphaAI as Documents.
+    """Fetches SEC Form 4 insider-trading events from AlphAI as Documents.
 
     Every item is one insider event (a filing's grouped buy/sell transactions)
     with a structured ``meta["insider"]`` block: side, shares, average price,
@@ -195,7 +195,7 @@ class AlphaAIInsiderNewsFetcher:
         top_k: int = DEFAULT_TOP_K,
     ) -> None:
         """
-        :param api_key: AlphaAI API key. Defaults to the ``ALPHAI_API_KEY`` env var.
+        :param api_key: AlphAI API key. Defaults to the ``ALPHAI_API_KEY`` env var.
         :param symbol: Only events for this ticker (share-class siblings included).
         :param min_relevance: 1-10 floor; higher means larger trades only.
         :param top_k: Maximum number of Documents to return per run.

@@ -4,10 +4,10 @@
 [![CI](https://github.com/makeev/alphai-haystack/actions/workflows/ci.yml/badge.svg)](https://github.com/makeev/alphai-haystack/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[Haystack](https://haystack.deepset.ai) components for [AlphaAI](https://alphai.io) — AI-scored
+[Haystack](https://haystack.deepset.ai) components for [AlphAI](https://alphai.io) — AI-scored
 financial news and SEC Form 4 insider events, delivered as Haystack `Document` objects.
 
-Every article on the AlphaAI feed is enriched at ingest: per-ticker impact analysis, a category,
+Every article on the AlphAI feed is enriched at ingest: per-ticker impact analysis, a category,
 and a 1-10 relevance score. SEC Form 4 filings become structured insider events about 6 minutes
 after they hit EDGAR. These components fetch that feed so your pipelines and agents can reason
 over pre-scored market news instead of raw headlines.
@@ -98,7 +98,7 @@ API key is stored as an environment-variable reference, never as the raw value.
 
 | Key | Type | Notes |
 |---|---|---|
-| `uid` | str | Stable article id (use with the AlphaAI article endpoint) |
+| `uid` | str | Stable article id (use with the AlphAI article endpoint) |
 | `url` | str | Original article URL |
 | `title`, `source`, `source_domain` | str | |
 | `published_at` | str | ISO 8601 |
@@ -126,7 +126,7 @@ Tests run fully offline against a fake client.
 
 ## Links
 
-- [AlphaAI developer docs](https://alphai.io/developers)
+- [AlphAI developer docs](https://alphai.io/developers)
 - [OpenAPI schema](https://api.alphai.io/api/schema/)
 - [Python SDK (`alphai-sdk`)](https://github.com/makeev/alphai-sdk) — this package is a thin
   Haystack layer over it

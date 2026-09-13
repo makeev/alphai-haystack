@@ -1,4 +1,4 @@
-"""Market brief for one ticker: AlphaAI scored news -> prompt -> LLM.
+"""Market brief for one ticker: AlphAI scored news -> prompt -> LLM.
 
 Needs ALPHAI_API_KEY (free at https://alphai.io/developers) and OPENAI_API_KEY.
 
